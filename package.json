@@ -1,0 +1,31 @@
+{
+  "name": "findadoc-api-test",
+  "description": "TEST API for findadoc.jp",
+  "version": "1.0.0",
+  "scripts": {
+    "runlocal" : "yarn build && node index.ts",
+    "build": "yarn && tsc",
+    "lint": "eslint src/ --ext .ts"
+  },
+  "main": "dist/index.js",
+  "engines": {
+    "node": "14"
+  },
+  "dependencies": {
+    "@google-cloud/debug-agent": "^5.2.5",
+    "@google-cloud/secret-manager": "^3.7.2",
+    "firebase-admin": "^9.9.0",
+    "firebase-functions": "^3.14.1",
+    "request-promise": "^4.2.6"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^1.9.0",
+    "@tsconfig/node14": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser" : "^4.28.1",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.4"
+  }
+}

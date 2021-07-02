@@ -1,0 +1,38 @@
+name: Deploy GCP Functions
+on:
+  push:
+    branches:
+    - main
+jobs:
+  main:
+    name: deploy authenticateRecaptcha gcp function
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: deploy
+        uses: google-github-actions/deploy-cloud-functions@main
+        with:
+          name: authenticateRecaptcha
+          entry_point: authenticateRecaptcha
+          runtime: nodejs14
+          event_trigger_type: http
+          event_trigger_resource: projects/${{ secrets.GCP_PROJECT }}/topics/${{ secrets.PUB_SUB_TOPIC }}
+          credentials: ${{ secrets.CLOUD_FUNC_DEPLOY_KEY }}
+          project_id: ${{ secrets.GCP_PROJECT }}
+    # Add additional functions here.
+    # name: deploy {my-function} gcp function
+    # runs-on: ubuntu-latest
+    # steps:
+    #   - name: checkout code
+    #     uses: actions/checkout@v2
+    #   - name: deploy
+    #     uses: google-github-actions/deploy-cloud-functions@main
+    #     with:
+    #       name: {my-function}
+    #       entry_point: {my-function}
+    #       runtime: nodejs14
+    #       event_trigger_type: {your-trigger-type-here}
+    #       event_trigger_resource: projects/${{ secrets.GCP_PROJECT }}/topics/${{ secrets.PUB_SUB_TOPIC }}
+    #       credentials: ${{ secrets.CLOUD_FUNC_DEPLOY_KEY }}
+    #       project_id: ${{ secrets.GCP_PROJECT }}
