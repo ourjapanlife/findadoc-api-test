@@ -1,11 +1,10 @@
 // import functions from 'firebase-functions'
 import requestPromise from 'request-promise'
 
-exports.authenticateRecaptcha = async (req, res) => {
+export const authenticateRecaptcha = async (req: any, res: any) => {
     try {
-
         const response = req.query.response
-        console.log("recaptcha response", response)
+        console.log('recaptcha response', response)
         const result = await requestPromise({
             uri: 'https://recaptcha.google.com/recaptcha/api/siteverify',
             method: 'POST',
@@ -16,15 +15,14 @@ exports.authenticateRecaptcha = async (req, res) => {
             json: true
         })
 
-        console.log("recaptcha result", result)
+        console.log('recaptcha result', result)
         if (result.success) {
             res.send("You're good to go, human.")
-        }
-        else {
-            res.send("Recaptcha verification failed. Are you a robot?")
+        } else {
+            res.send('Recaptcha verification failed. Are you a robot?')
         }
     } catch (error) {
-        console.error("Recaptcha request failure", error)
-        res.send("Recaptcha request failed.")
+        console.error('Recaptcha request failure', error)
+        res.send('Recaptcha request failed.')
     }
-})
+}

@@ -10,6 +10,7 @@ This project is currently using google cloud functions.
 ## Getting started
 
 - Run `yarn build` to verify you can properly build the project.
+- You must commit your changes in DIST for your functions to be updated!!!
 - Create a Pull Request from your feature branch to `main`.
 - When it's merged into `main` it will be deployed to prod.
 - That's it!
