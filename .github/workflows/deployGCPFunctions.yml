@@ -17,10 +17,11 @@ jobs:
           entry_point: authenticateRecaptcha
           runtime: nodejs14
           event_trigger_type: http
-          event_trigger_resource: projects/${{ secrets.GCP_PROJECT }}/topics/${{ secrets.PUB_SUB_TOPIC }}
           credentials: ${{ secrets.CLOUD_FUNC_DEPLOY_KEY }}
           project_id: ${{ secrets.GCP_PROJECT }}
     # Add additional functions here.
+
+    # TEMPLATE
     # name: deploy {my-function} gcp function
     # runs-on: ubuntu-latest
     # steps:
