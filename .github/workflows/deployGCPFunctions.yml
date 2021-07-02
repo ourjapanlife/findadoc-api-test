@@ -16,7 +16,6 @@ jobs:
           name: authenticateRecaptcha
           entry_point: authenticateRecaptcha
           runtime: nodejs14
-          event_trigger_type: http
           credentials: ${{ secrets.CLOUD_FUNC_DEPLOY_KEY }}
           project_id: ${{ secrets.GCP_PROJECT }}
     # Add additional functions here.
