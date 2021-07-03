@@ -3,21 +3,21 @@ import requestPromise from 'request-promise'
 
 export const authenticateRecaptcha = async (req: any, res: any) => {
     try {
-        const response = req.query.response
-        console.log('recaptcha response', response)
+        const token = req.query.token
+        console.log('recaptcha token', token)
         const result = await requestPromise({
             uri: 'https://recaptcha.google.com/recaptcha/api/siteverify',
             method: 'POST',
             formData: {
-                secret: 'PASTE_YOUR_SECRET_CODE_HERE',
-                response: response
+                secret: process.env.RECAPTCHA_SECRET_KEY,
+                response: token
             },
             json: true
         })
 
-        console.log('recaptcha result', result)
-        if (result.success) {
-            res.send("You're good to go, human.")
+        console.log('recaptcha result', result.data)
+        if (result.data.success) {
+            res.send('Recaptcha score', result.data.score)
         } else {
             res.send('Recaptcha verification failed. Are you a robot?')
         }
