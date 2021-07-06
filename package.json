@@ -3,7 +3,7 @@
   "description": "TEST API for findadoc.jp",
   "version": "1.0.0",
   "scripts": {
-    "runlocal" : "yarn build && node index.ts",
+    "start:recaptcha": "yarn build && npx functions-framework --source=dist/ --target=authenticateRecaptcha --signature-type=http",
     "build": "yarn && tsc",
     "lint": "eslint src/ --ext .ts"
   },
